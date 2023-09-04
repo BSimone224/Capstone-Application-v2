@@ -13,7 +13,6 @@ import AddCity from './src/AddCity/AddCity'
 import Countries from './src/Countries/Countries'
 import AddCountry from './src/AddCountry/AddCountry'
 import CalendarWithTextInput from './src/Calendar/CalendarInput';
-import StackNavigator from './src/homescreen';
 
 const Tab = createBottomTabNavigator();
 
