@@ -1,4 +1,3 @@
-// OpeningScreen.js
 
 import React, { useEffect } from 'react';
 import { View, Text, Animated, StyleSheet } from 'react-native';

@@ -1,8 +1,8 @@
 // StackNavigator.js
 
 import React from 'react';
-import { createStackNavigator } from '@react-navigation-stack';
-import OpeningScreen from './src/opening_page';
+import { createStackNavigator } from '@react-navigation/stack';
+import OpeningScreen from './opening_page';
 
 const Stack = createStackNavigator();
 
