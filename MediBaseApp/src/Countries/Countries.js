@@ -3,9 +3,9 @@ import { View, Text, StyleSheet, TouchableWithoutFeedback, ScrollView } from 're
 import CenterMessage from '../components/CenterMessage'
 import { colors } from '../theme'
 
-export default class New_Dosages extends React.Component {
+export default class Countries extends React.Component {
   static navigationOptions = {
-    title: 'Dosages',
+    title: 'Countries',
     headerTitleStyle: {
       color: 'white',
       fontSize: 20,
@@ -13,22 +13,22 @@ export default class New_Dosages extends React.Component {
     }
   }
   navigate = (item) => {
-    this.props.navigation.navigate('Dosages', { dosage: item })
+    this.props.navigation.navigate('Countries', { country: item })
   }
   render() {
-    const { dosages } = this.props.route.params;
+    const {  countries  } = this.props.route.params;
     return (
-      <ScrollView  contentContainerStyle={[!dosages.length && { flex: 1 }]}>
-        <View style={[!dosages.length && { justifyContent: 'center', flex: 1 }]}>
+      <ScrollView  contentContainerStyle={[!countries.length && { flex: 1 }]}>
+        <View style={[!countries.length && { justifyContent: 'center', flex: 1 }]}>
           {
-            !dosages.length && <CenterMessage message='No Saved Dosages' />
+            !countries.length && <CenterMessage message='No Saved Dosages' />
           }
           {
-            dosages.map((item, index) => (
+            countries.map((item, index) => (
               <TouchableWithoutFeedback onPress={() => this.navigate(item)} key={index} >
-                <View style={styles.doseContainer}>
-                  <Text style={styles.dosage}>{item.dosages}</Text>
-                  <Text style={styles.frequency}>{item.frequency}</Text>
+                <View style={styles.countryContainer}>
+                  <Text style={styles.country}>{item.country}</Text>
+                  <Text style={styles.currency}>{item.currency}</Text>
                 </View>
               </TouchableWithoutFeedback>
             ))
@@ -40,15 +40,15 @@ export default class New_Dosages extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  doseContainer: {
+  countryContainer: {
     padding: 10,
     borderBottomWidth: 2,
     borderBottomColor: colors.primary
   },
-  dosage: {
+  country: {
     fontSize: 20,
   },
-  frequency: {
+  currency: {
     color: 'rgba(0, 0, 0, .5)'
   },  
 })

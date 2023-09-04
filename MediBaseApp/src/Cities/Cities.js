@@ -5,9 +5,9 @@ import { View, Text, StyleSheet, TouchableWithoutFeedback, ScrollView } from 're
 import CenterMessage from '../components/CenterMessage'
 import { colors } from '../theme'
 
-export default class Prescriptions extends React.Component {
+export default class Cities extends React.Component {
   static navigationOptions = {
-    title: 'Prescriptions',
+    title: 'Cities',
     headerTitleStyle: {
       color: 'white',
       fontSize: 20,
@@ -15,22 +15,22 @@ export default class Prescriptions extends React.Component {
     }
   }
   navigate = (item) => {
-    this.props.navigation.navigate('Prescription', { prescription: item })
+    this.props.navigation.navigate('City', { city: item })
   }
   render() {
-    const {  prescription  } = this.props.route.params;
+    const {  cities  } = this.props.route.params;
     return (
-      <ScrollView  contentContainerStyle={[!prescription.length && { flex: 1 }]}>
-        <View style={[!prescription.length && { justifyContent: 'center', flex: 1 }]}>
+      <ScrollView  contentContainerStyle={[!cities.length && { flex: 1 }]}>
+        <View style={[!cities.length && { justifyContent: 'center', flex: 1 }]}>
           {
-            !prescription.length && <CenterMessage message='No Saved Prescriptions!' />
+            !cities.length && <CenterMessage message='No Saved Prescriptions' />
           }
           {
-            prescription.map((item, index) => (
+            cities.map((item, index) => (
               <TouchableWithoutFeedback onPress={() => this.navigate(item)} key={index} >
-                <View style={styles.prescriptionContainer}>
-                  <Text style={styles.name}>{item.name}</Text>
-                  <Text style={styles.physician}>{item.physician}</Text>
+                <View style={styles.cityContainer}>
+                  <Text style={styles.city}>{item.city}</Text>
+                  <Text style={styles.country}>{item.country}</Text>
                 </View>
               </TouchableWithoutFeedback>
             ))
@@ -42,15 +42,15 @@ export default class Prescriptions extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  prescriptionContainer: {
+  cityContainer: {
     padding: 10,
     borderBottomWidth: 2,
     borderBottomColor: colors.primary
   },
-  name: {
+  city: {
     fontSize: 20,
   },
-  physician: {
+  country: {
     color: 'rgba(0, 0, 0, .5)'
   },  
 })

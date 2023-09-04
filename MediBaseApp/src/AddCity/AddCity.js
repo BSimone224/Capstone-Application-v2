@@ -1,30 +1,32 @@
+// Listing 6.5 AddCity tab
+// Listing 6.6 AddCity tab
 import React from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 import uuidV4 from 'uuid/v4'
 import { colors } from '../theme'
 
-class AddPrescription extends React.Component {
+class AddCity extends React.Component {
   state = {
-    name: '',
-    physician: ''
+    city: '',
+    country: ''
   }
   onChangeText = (key, value) => {
     this.setState({ [key]: value })
   }
   submit = () => {
-    if (this.state.name === '' || this.state.physician === '') alert('Please Enter Prescription Information')
-    const prescription = {
-      name: this.state.name,
-      frequency: this.state.frequency,
+    if (this.state.city === '' || this.state.country === '') alert('Please add a Physician Name')
+    const city = {
+      city: this.state.city,
+      country: this.state.country,
       id: uuidV4(),
       locations: []
     }
-    this.props.route.params.AddPrescription(prescription)
+    this.props.route.params.addCity(city)
     this.setState({
-      name: '',
-      physician: ''
+      city: '',
+      country: ''
     }, () => {
-      this.props.navigation.navigate('Prescription')
+      this.props.navigation.navigate('Cities')
     })
   }
   render() {
@@ -32,16 +34,16 @@ class AddPrescription extends React.Component {
       <View style={styles.container}>
         <Text style={styles.heading}>Prescriptions</Text>
         <TextInput
-          placeholder='Prescription Name'
-          onChangeText={val => this.onChangeText('name', val)}
+          placeholder='Prescription name'
+          onChangeText={val => this.onChangeText('city', val)}
           style={styles.input}
-          value={this.state.name}
+          value={this.state.city}
         />
         <TextInput
-          placeholder='Physician Name'
-          onChangeText={val => this.onChangeText('physician', val)}
+          placeholder='Physician name'
+          onChangeText={val => this.onChangeText('country', val)}
           style={styles.input}
-          value={this.state.frequency}
+          value={this.state.country}
         />
         <TouchableOpacity onPress={this.submit}>
           <View style={styles.button}>
@@ -84,4 +86,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default AddPrescription
+export default AddCity

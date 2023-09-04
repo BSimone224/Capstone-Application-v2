@@ -3,49 +3,49 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-nativ
 import uuidV4 from 'uuid/v4'
 import { colors } from '../theme'
 
-class AddDosage extends React.Component {
+class AddCountry extends React.Component {
   state = {
-    dosages: '',
-    frequency: ''
+    country: '',
+    currency: ''
   }
   onChangeText = (key, value) => {
     this.setState({ [key]: value })
   }
   submit = () => {
-    if (this.state.dosages === '' || this.state.frequency === '') alert('Please Enter Prescription Frequency')
-    const dosages = {
-      dosages: this.state.dosages,
-      frequency: this.state.frequency,
+    if (this.state.country === '' || this.state.currency === '') alert('Please add frequency of medication')
+    const country = {
+      country: this.state.country,
+      currency: this.state.currency,
       id: uuidV4(),
       locations: []
     }
-    this.props.route.params.add_dosage(dosages)
+    this.props.route.params.addcountries(country)
     this.setState({
-      dosages: '',
-      frequency: ''
+      country: '',
+      currency: ''
     }, () => {
-      this.props.navigation.navigate('Dosages')
+      this.props.navigation.navigate('Countries')
     })
   }
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.heading}>Dosage</Text>
+        <Text style={styles.heading}>Dosages</Text>
         <TextInput
-          placeholder='Dosages'
-          onChangeText={val => this.onChangeText('dosages', val)}
+          placeholder='Prescription Dosage'
+          onChangeText={val => this.onChangeText('country', val)}
           style={styles.input}
-          value={this.state.dosages}
+          value={this.state.country}
         />
         <TextInput
-          placeholder='Frequency'
-          onChangeText={val => this.onChangeText('frequency', val)}
+          placeholder='Dosage Frequency'
+          onChangeText={val => this.onChangeText('currency', val)}
           style={styles.input}
-          value={this.state.frequency}
+          value={this.state.currency}
         />
         <TouchableOpacity onPress={this.submit}>
           <View style={styles.button}>
-            <Text style={styles.buttonText}>Add Dosages</Text>
+            <Text style={styles.buttonText}>Add Dosage</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -84,4 +84,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default AddDosage
+export default AddCountry
